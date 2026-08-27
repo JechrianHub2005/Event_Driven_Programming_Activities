@@ -1,0 +1,20 @@
+import { useEffect, useState } from "react";
+
+export function ClockLabel() {
+  const [now, setNow] = useState(new Date());
+
+  useEffect(() => {
+    const id = window.setInterval(() => {
+      setNow(new Date());
+    }, 1000);
+
+    return () => window.clearInterval(id);
+  }, []);
+
+  return (
+    <section>
+      <h2>Clock</h2>
+      <h3>{now.toLocaleTimeString()}</h3>
+    </section>
+  );
+}
